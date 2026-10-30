@@ -1,0 +1,33 @@
+{
+  "name": "smartbus",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "apps/api",
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "concurrently -k \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "npm --workspace apps/api run dev",
+    "dev:web": "npm --workspace apps/web run dev",
+    "build": "npm --workspace apps/api run build && npm --workspace apps/web run build",
+    "test": "npm --workspace apps/api test",
+    "db:generate": "npm --workspace apps/api run db:generate",
+    "db:validate": "npm --workspace apps/api run db:validate",
+    "db:migrate": "npm --workspace apps/api run db:migrate",
+    "db:status": "npm --workspace apps/api run db:status",
+    "db:seed": "npm --workspace apps/api run db:seed"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "typescript": "^5.7.3"
+  },
+  "allowScripts": {
+    "@prisma/client@6.19.3": true,
+    "prisma@6.19.3": true,
+    "@prisma/engines@6.19.3": true,
+    "esbuild@0.28.2": true,
+    "esbuild@0.21.5": true,
+    "esbuild@0.25.12": true
+  }
+}
